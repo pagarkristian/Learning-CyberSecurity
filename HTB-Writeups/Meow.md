@@ -49,13 +49,13 @@ telnet 10.129.158.145
 Setelah berhasil masuk ,saya menjalankan perintah dasar linux unutk mencari flag:
 ```bash
 ls
-```
-<img width="1246" height="132" alt="Screenshot 2026-05-01 143714" src="https://github.com/user-attachments/assets/8fc77241-d441-4abc-8bb0-438ae17b1672" />
-```bash
-cat flag.txt
-```
-<img width="985" height="82" alt="Screenshot 2026-05-01 143732" src="https://github.com/user-attachments/assets/6b526e74-5fcc-4c68-83d9-f6cf4c92e1c0" />
 
+<img width="1246" height="132" alt="Screenshot 2026-05-01 143714" src="https://github.com/user-attachments/assets/8fc77241-d441-4abc-8bb0-438ae17b1672" />
+
+cat flag.txt
+
+<img width="985" height="82" alt="Screenshot 2026-05-01 143732" src="https://github.com/user-attachments/assets/6b526e74-5fcc-4c68-83d9-f6cf4c92e1c0" />
+```
 
 ---
 **Dokumentasi oleh:** Pagar Kristian Panjaitan - SMK Telkom 2 Medan (TKJ)
