@@ -53,6 +53,10 @@ ls
 
 <img width="1246" height="132" alt="Screenshot 2026-05-01 143714" src="https://github.com/user-attachments/assets/8fc77241-d441-4abc-8bb0-438ae17b1672" />
 
+
+
+
+
 ```bash
 cat flag.txt
 ```
