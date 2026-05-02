@@ -109,11 +109,11 @@ Setelah serangan dilancarkan, saya melakukan pengecekan untuk melihat efektivita
 Berdasarkan monitoring menggunakan ss, jumlah koneksi melonjak drastis:
 
 
-#Serangan hping3: Angka melonjak dari satuan ke ribuan (1175 koneksi).
+# Serangan hping3: Angka melonjak dari satuan ke ribuan (1175 koneksi).
 <img width="1012" height="170" alt="image" src="https://github.com/user-attachments/assets/adc980eb-bc67-4c93-9969-0beaff9dabea" />
 
 
-#Serangan Slowloris: Angka melonjak dari satuan ke ratusan (151 koneksi).
+# Serangan Slowloris: Angka melonjak dari satuan ke ratusan (151 koneksi).
 <img width="1130" height="263" alt="image" src="https://github.com/user-attachments/assets/4f4b3712-707f-42b5-9271-b1343f5c8941" />
 
 
