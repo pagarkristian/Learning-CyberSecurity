@@ -60,12 +60,11 @@ sudo iftop
 
 
 
-##2. Fase Eksploitasi (Attack)
+## 2. Fase Eksploitasi (Attack)
 Setelah pemetaan selesai, saya melakukan pengujian pada dua layer berbeda untuk melumpuhkan ketersediaan layanan pada target.
 
 
-
-###A. Layer 4: SYN Flood (hping3)
+### A. Layer 4: SYN Flood (hping3)
 Serangan ini membanjiri antrean koneksi TCP dengan mengirimkan paket SYN secara masif menggunakan alamat IP pengirim yang diacak (IP Spoofing).
 
 
@@ -102,9 +101,8 @@ slowloris 192.168.1.9
 
 
 
-##3. Analisis Dampak Serangan (Impact)
+## 3. Analisis Dampak Serangan (Impact)
 Setelah serangan dilancarkan, saya melakukan pengecekan untuk melihat efektivitas eksploitasi terhadap resource server.
-
 
 
 ### A. Lonjakan Koneksi Aktif
@@ -126,7 +124,7 @@ Trafik jaringan dan penggunaan bandwidth terlihat meningkat tajam pada tool ifto
 
 
 
-###C. Kegagalan Layanan (Denial of Service)
+### C. Kegagalan Layanan (Denial of Service)
 Saat diakses melalui browser, website menjadi sangat lambat bahkan menampilkan error "This site can’t be reached" (Connection Timed Out), menandakan layanan telah lumpuh.
 <img width="772" height="516" alt="image" src="https://github.com/user-attachments/assets/83ed417d-3bcf-4b36-b01c-0bf2d50221f4" />
 
@@ -155,7 +153,7 @@ sudo iptables -A INPUT -p tcp --dport 80 -j DROP
 
 
 
-###B. Monitoring Aturan Firewall
+### B. Monitoring Aturan Firewall
 Untuk memastikan aturan telah berjalan dan melihat statistik lalu lintas data (paket/bytes) yang masuk melalui setiap aturan, gunakan perintah berikut:
 
 
@@ -174,7 +172,7 @@ sudo iptables -L -n -v
 
 
 
-###C. Persistensi Konfigurasi
+### C. Persistensi Konfigurasi
 Secara default, aturan iptables akan hilang setelah komputer di-restart. Untuk menyimpannya secara permanen, saya menginstal paket iptables-persistent.
 ```bash
 sudo apt-get install iptables-persistent
@@ -188,7 +186,7 @@ Setelah konfigurasi pertahanan diterapkan, kondisi server dipantau kembali untuk
 
 
 
-###A. Penurunan Trafik & Koneksi
+### A. Penurunan Trafik & Koneksi
 Setelah pertahanan aktif, monitoring real-time menunjukkan hasil yang signifikan:
 
 Trafik Bandwidth: Berdasarkan pantauan iftop, arus data dari penyerang (hping3 dan slowloris) berhasil diredam.
@@ -200,7 +198,7 @@ Stabilitas Koneksi: Jumlah koneksi pada port 80 yang sebelumnya ribuan, kini tur
 
 
 
-###B. Pemulihan Layanan Web
+### B. Pemulihan Layanan Web
 Website pada IP 192.168.1.9 yang sebelumnya error/timed out, kini dapat diakses kembali dengan lancar. Tampilan "It works!" pada halaman default Apache2 menandakan ketersediaan layanan telah kembali normal (High Availability terjaga)
 <img width="811" height="447" alt="image" src="https://github.com/user-attachments/assets/44056ca8-02a9-4bb0-92e9-de9cd3b02d4b" />
 
