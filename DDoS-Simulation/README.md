@@ -203,7 +203,7 @@ Website pada IP 192.168.1.9 yang sebelumnya error/timed out, kini dapat diakses 
 <img width="811" height="447" alt="image" src="https://github.com/user-attachments/assets/44056ca8-02a9-4bb0-92e9-de9cd3b02d4b" />
 
 
-###Simulasi ini membuktikan bahwa pembatasan koneksi pada Layer 4 dan Layer 7 menggunakan iptables efektif untuk menjaga *availability* server dari serangan flooding sederhana.
+### Simulasi ini membuktikan bahwa pembatasan koneksi pada Layer 4 dan Layer 7 menggunakan iptables efektif untuk menjaga *availability* server dari serangan flooding sederhana.
 
 ---
 **Dokumentasi oleh:** Pagar Kristian Panjaitan - SMK Telkom 2 Medan (TKJ)
