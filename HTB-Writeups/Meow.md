@@ -1,4 +1,4 @@
-#Writeup : Meow (HTB Starting Point)
+# Writeup : Meow (HTB Starting Point)
 **Target IP:** 10.129.158.145
 **Platform:** Hack The Box
 **Difficulty:** Very Easy
