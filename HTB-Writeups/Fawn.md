@@ -1,4 +1,13 @@
-# Hack The Box: Fawn (Starting Point) - Write-up 🚩
+# 🚀 Hack The Box - Fawn Write-up
+
+### **Informasi Mesin**
+| Nama Mesin | Target IP | Kesulitan | OS | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **Fawn** | `10.129.163.90` | Very Easy | Linux | **SOLVED** ✅ |
+
+---
+<img width="879" height="636" alt="Screenshot 2026-05-07 093234" src="https://github.com/user-attachments/assets/070d066d-13b1-488c-b147-0090406ef59b" />
+
 
 Repositori ini mendokumentasikan proses Penetrasi Dasar pada machine **Fawn** di platform Hack The Box. Machine ini berfokus pada eksploitasi layanan FTP (File Transfer Protocol) yang dikonfigurasi secara kurang aman.
 
