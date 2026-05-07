@@ -1,8 +1,12 @@
-# Writeup : Meow (HTB Starting Point)
-**Target IP:** 10.129.158.145
-**Platform:** Hack The Box
-**Difficulty:** Very Easy
+# 🚀 Hack The Box - Meow Write-up
 
+### **Informasi Mesin**
+| Nama Mesin | Target IP | Kesulitan | OS | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **Meow** | `10.129.158.145` | Very Easy | Linux | **SOLVED** ✅ |
+
+---
+<img width="869" height="607" alt="Screenshot 2026-05-07 093623" src="https://github.com/user-attachments/assets/e8b9d1a1-19cf-46fa-b1ad-b5794ba48050" />
 
 
 ## 1> Konektivitas (Ping)
