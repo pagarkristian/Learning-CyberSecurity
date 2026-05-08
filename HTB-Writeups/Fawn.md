@@ -1,9 +1,9 @@
 # 🚀 Hack The Box - Fawn Write-up
 
-### **Informasi Mesin**
-| Nama Mesin | Target IP | Kesulitan | OS | Status |
+### **Machine Information**
+| Machine Name | Target IP | Difficulty | Focus Service | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **Fawn** | `10.129.163.90` | Very Easy | Linux | **SOLVED** ✅ |
+| **Fawn** | `10.129.163.90`| Very Easy | Linux | **SOLVED** ✅ |
 
 ---
 <img width="879" height="636" alt="Screenshot 2026-05-07 093234" src="https://github.com/user-attachments/assets/070d066d-13b1-488c-b147-0090406ef59b" />
