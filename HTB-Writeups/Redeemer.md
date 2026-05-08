@@ -5,9 +5,10 @@
 | :--- | :--- | :--- | :--- | :--- |
 | **Redeemer** | `10.129.174.87` | Very Easy | Redis (NoSQL Database) | **SOLVED** ✅ |
 
+---
 <img width="879" height="584" alt="Screenshot 2026-05-07 213151" src="https://github.com/user-attachments/assets/978dea7e-ef8c-4e6f-9c2e-7f3180be6cdd" />
 
----
+
 
 ## 📝 Exploitation Summary
 This lab demonstrates the high security risks associated with **Misconfiguration** in a Redis database service. The target service was found running publicly without password authentication (*Anonymous Access*), allowing an attacker to connect, enumerate internal databases, and extract sensitive information directly through the command line.
