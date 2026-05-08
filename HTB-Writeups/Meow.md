@@ -9,8 +9,8 @@
 <img width="869" height="607" alt="Screenshot 2026-05-07 093623" src="https://github.com/user-attachments/assets/e8b9d1a1-19cf-46fa-b1ad-b5794ba48050" />
 
 
-## 1> Konektivitas (Ping)
-Langkah pertama adalah memastikan mesin targer dapat dijangkau dari terminal, saya menggunakan perintah `ping`:
+## 1. Connectivity (Ping)
+The first step is to ensure that the target machine is reachable from the terminal; I am using the `ping` command:
 ```bash
 ping -c  10.129.158.145
 ```
@@ -19,8 +19,8 @@ ping -c  10.129.158.145
 
 
 
-## 2> Persiapan Akses (Root)
-Sebelum memulai praktikum,saya meningkatkan hak akses terminal saya menjadi **root** agar bisa menjalankan semua perintah teknis tanpa hambatan:
+## 2. Access Preparation (Root)
+Before starting the practical lab, I elevated my terminal privileges to **root** to ensure I could execute all technical commands without any restrictions:
 ```bash
 sudo su
 ```
@@ -29,8 +29,8 @@ sudo su
 
 
 
-## 3> Pemindaian Port (Nmap)
-Saya melakukan scanning untuk mencari port yang terbuka menggunakan `Nmap`:
+## 3. Port Scanning (Nmap)
+I performed a scan to identify open ports using `Nmap`:
 ```bash
 nmap -sV 10.129.158.145
 ```
@@ -39,8 +39,8 @@ nmap -sV 10.129.158.145
 
 
 
-## 4> Eksploitasi (Telnet)
-Saya mendapatkan port 23 yang terbuka, dan saya mencoba masuk ke sistem target melalui protokol Telnet tanpa memasukkan pasword menggunakan user `root`:
+## 4. Exploitation (Telnet)
+I found that port 23 was open, and I attempted to log into the target system via the Telnet protocol as the **root** user without entering a password:
 ```bash
 telnet 10.129.158.145
 ```
@@ -49,8 +49,8 @@ telnet 10.129.158.145
 
 
 
-## 5> Navigation system
-Setelah berhasil masuk ,saya menjalankan perintah dasar linux unutk mencari flag:
+## 5. System Navigation
+After successfully logging in, I executed basic Linux commands to search for the flag:
 ```bash
 ls
 ```
@@ -68,4 +68,4 @@ cat flag.txt
 
 
 ---
-**Dokumentasi oleh:** Pagar Kristian Panjaitan - SMK Telkom 2 Medan (TKJ)
+**Documented by**: Pagar Kristian Panjaitan - SMK Telkom 2 Medan (Computer and Network Engineering)
