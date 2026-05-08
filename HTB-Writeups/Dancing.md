@@ -1,9 +1,9 @@
 # 🚀 Hack The Box - Dancing Write-up
 
-### **Informasi Mesin**
-| Nama Mesin | Target IP | Kesulitan | OS | Status |
+### **Machine Information**
+| Machine Name | Target IP | Difficulty | Focus Service | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **Dancing** | `10.129.171.100` | Very Easy | Windows | **SOLVED** ✅ |
+| **Dancing** | `10.129.171.100`| Very Easy | Windows | **SOLVED** ✅ |
 
 <img width="784" height="543" alt="Screenshot 2026-05-06 141028" src="https://github.com/user-attachments/assets/36e59e9b-5d84-464a-a2f2-af5fec17d618" />
 
