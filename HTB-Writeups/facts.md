@@ -143,7 +143,6 @@ We transferred the recovered private key text block into a local file named id_e
 sudo nano id_ed25519
 ```
 <img width="405" height="54" alt="Screenshot 2026-05-13 155821" src="https://github.com/user-attachments/assets/5433b1e1-0aed-4278-a1bc-c23965b7c6c2" />
-<img width="1067" height="362" alt="Screenshot 2026-05-13 215907" src="https://github.com/user-attachments/assets/b02797ef-263b-4f2f-ac64-6fa2407fd1f1" />
 
 To satisfy the strict security validation requirements of the native SSH client, we ran chmod to clear insecure global read permissions from our local key file:
 
