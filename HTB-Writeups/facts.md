@@ -106,13 +106,14 @@ Refreshing our dashboard view confirmed that our account permissions had been su
 With elevated administrative session tokens established, we analyzed the active platform version (Version 2.9.0), which is vulnerable to an authenticated Arbitrary File Read flaw tracked under CVE-2024-46987.
 
 We fetched a public exploit script designed for this vulnerability from GitHub onto our local testing machine and verified the file structure:
+<img width="1919" height="1018" alt="Screenshot 2026-05-13 160019" src="https://github.com/user-attachments/assets/228fb76a-d070-4122-b564-a963781b1d08" />
 ```bash
 sudo git clone https://github.com/Goultarde/CVE-2024-46987
 cd CVE-2024-46987
 ls
 ```
 
-<img width="1919" height="1018" alt="Screenshot 2026-05-13 160019" src="https://github.com/user-attachments/assets/228fb76a-d070-4122-b564-a963781b1d08" />
+
 <img width="421" height="111" alt="Screenshot 2026-05-13 155736" src="https://github.com/user-attachments/assets/c421189e-a56f-4bda-9524-42d252191e9a" />
 
 
