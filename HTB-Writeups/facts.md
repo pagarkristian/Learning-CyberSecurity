@@ -67,7 +67,7 @@ Navigating to http://facts.htb via our browser loaded the primary landing page o
 
 To explore the authenticated surface area of the web , we accessed the public registration endpoint at /admin/register and created a standard low-privileged account under the username victimuser.
 
-<img width="1715" height="909" alt="Screenshot 2026-05-13 143009" src="https://github.com/user-attachments/assets/3a353582-c17e-44be-9fcf-c714d5e999c5" />
+<img width="1292" height="810" alt="Screenshot 2026-05-13 124619" src="https://github.com/user-attachments/assets/888a744e-b395-4e86-b243-9ae55fbf1fb8" />
 
 
 After logging into the backend panel, the default landing interface confirmed that our active session lacked administrative rights, hiding critical management configurations and system tools.
