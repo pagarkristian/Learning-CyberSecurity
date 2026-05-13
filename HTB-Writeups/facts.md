@@ -29,6 +29,7 @@ Before executing any active scanning against the target infrastructure, we check
 With the VPN tunnel verified, we initiated an ICMP echo request using the `ping` utility to confirm that the target lab instance at IP address `10.129.57.204` was online and responsive.
 
 <img width="688" height="187" alt="Screenshot 2026-05-13 124121" src="https://github.com/user-attachments/assets/a9e5b215-0862-4a18-b2ba-60d20584ed65" />
+<img width="802" height="284" alt="Screenshot 2026-05-13 223228" src="https://github.com/user-attachments/assets/a19f722d-2204-4340-afa8-debaeb603d15" />
 
 
 ### Local DNS Resolution Configuration
