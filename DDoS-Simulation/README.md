@@ -208,4 +208,4 @@ restored and High Availability (HA) was successfully maintained.
 ### This simulation demonstrates that limiting connection rates at Layer 4 and Layer 7 using iptables is highly effective in maintaining server availability against standard flooding attacks.
 
 ---
-**Documented by**: Pagar Kristian Panjaitan - SMK Telkom 2 Medan (Computer and Network Engineering)
+**Documented by**: Pagar Kristian Panjaitan 
