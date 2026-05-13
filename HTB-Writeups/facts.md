@@ -18,23 +18,31 @@ This writeup documents the complete, step-by-step security auditing and exploita
 ### Network Environment Verification
 Before executing any active scanning against the target infrastructure, we checked our local networking interfaces using the `ip a` command. This step verifies that our OpenVPN tunnel (`tun0`) is active and captures our attacker host IP address, which was assigned as `10.10.14.18`.
 
-![Checking VPN Interface IP] (Screenshot%202026-05-13%20141246.png)
+
+
+<img width="1015" height="370" alt="Screenshot 2026-05-13 141246" src="https://github.com/user-attachments/assets/cf4e3691-f5be-4e48-911b-a401b90bb9a1" />
+
+
 
 ### Host Discovery (Ping)
 With the VPN tunnel verified, we initiated an ICMP echo request using the `ping` utility to confirm that the target lab instance at IP address `10.129.57.204` was online and responsive.
 
+<img width="688" height="187" alt="Screenshot 2026-05-13 124121" src="https://github.com/user-attachments/assets/a9e5b215-0862-4a18-b2ba-60d20584ed65" />
 
-![<img width="688" height="187" alt="Screenshot 2026-05-13 124121" src="https://github.com/user-attachments/assets/06a9cb03-689b-4566-a0b4-274b5bbd7c0e" />
-] (<img width="1015" height="370" alt="Screenshot 2026-05-13 141246" src="https://github.com/user-attachments/assets/8f5a628d-2e90-45c4-8e92-84318837c841" />
-)
 
 ### Local DNS Resolution Configuration
 The target instance uses name-based virtual hosting to route incoming traffic. To ensure our tools and browser could resolve the server's platform headers correctly, we opened our local `/etc/hosts` configuration file using the `nano` text editor:
 
 ```bash
 sudo nano /etc/hosts
+```
 
 
+<img width="350" height="61" alt="Screenshot 2026-05-13 124421" src="https://github.com/user-attachments/assets/57754e19-c344-4b35-b108-b021a0311ca4" />
+
+
+### We appended a static host entry mapping 10.129.57.204 to facts.htb. Below is the verified state of the local routing file:
+ <img width="1265" height="754" alt="Screenshot 2026-05-13 124408" src="https://github.com/user-attachments/assets/cc85ed35-a8ea-4ac1-ab54-5ab6b80e6d22" />
 
 
 
