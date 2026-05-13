@@ -41,7 +41,7 @@ sudo nano /etc/hosts
 
 
 <img width="350" height="61" alt="Screenshot 2026-05-13 124421" src="https://github.com/user-attachments/assets/57754e19-c344-4b35-b108-b021a0311ca4" />
-<img width="802" height="284" alt="Screenshot 2026-05-13 223228" src="https://github.com/user-attachments/assets/a19f722d-2204-4340-afa8-debaeb603d15" />
+
 
 ### We appended a static host entry mapping 10.129.57.204 to facts.htb. Below is the verified state of the local routing file:
  
