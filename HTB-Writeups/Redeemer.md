@@ -75,7 +75,7 @@ Flag Found: 03e1d2b376c37ab3f5319922053953eb
 <img width="390" height="118" alt="Screenshot 2026-05-07 213124" src="https://github.com/user-attachments/assets/410a86b1-cb2a-475a-85b6-9aac80691dc5" />
 
 ---
-**Documented by**: Pagar Kristian Panjaitan - SMK Telkom 2 Medan (Computer and Network Engineering)
+**Documented by**: Pagar Kristian Panjaitan
 
 
 
