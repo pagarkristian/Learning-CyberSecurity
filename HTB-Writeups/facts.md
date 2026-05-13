@@ -152,7 +152,9 @@ chmod 600 id_ed25519
 
 <img width="430" height="51" alt="Screenshot 2026-05-13 161043" src="https://github.com/user-attachments/assets/2a371ea1-57bb-4e79-98e9-f2966fba9793" />
 
-### Because the private key block was protected by a passphrase, we extracted its internal cryptographic signature using ssh2john and loaded it into John the Ripper. Running the cracker against the rockyou.txt dictionary quickly exposed the valid passphrase:
+Because the private key block was protected by a passphrase, we extracted its internal cryptographic signature using ssh2john and loaded it into John the Ripper. Running the cracker against the rockyou.txt dictionary quickly exposed the valid passphrase:
+
+<img width="549" height="61" alt="image" src="https://github.com/user-attachments/assets/727d246a-ee65-4cab-b021-b5c8ed116ad9" />
 
 <img width="873" height="210" alt="Screenshot 2026-05-13 160044" src="https://github.com/user-attachments/assets/acd43d7b-aace-4ebc-af77-19be423e3980" />
 
