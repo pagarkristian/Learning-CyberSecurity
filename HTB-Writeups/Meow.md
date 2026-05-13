@@ -69,4 +69,4 @@ cat flag.txt
 
 
 ---
-**Documented by**: Pagar Kristian Panjaitan - SMK Telkom 2 Medan (Computer and Network Engineering)
+**Documented by**: Pagar Kristian Panjaitan 
