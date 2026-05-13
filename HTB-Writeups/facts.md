@@ -111,8 +111,9 @@ sudo git clone https://github.com/Goultarde/CVE-2024-46987
 cd CVE-2024-46987
 ls
 ```
-<img width="1919" height="1018" alt="Screenshot 2026-05-13 160019" src="https://github.com/user-attachments/assets/228fb76a-d070-4122-b564-a963781b1d08" />
 <img width="421" height="111" alt="Screenshot 2026-05-13 155736" src="https://github.com/user-attachments/assets/c421189e-a56f-4bda-9524-42d252191e9a" />
+<img width="1919" height="1018" alt="Screenshot 2026-05-13 160019" src="https://github.com/user-attachments/assets/228fb76a-d070-4122-b564-a963781b1d08" />
+
 
 
 We ran the script against the target, providing our compromised administrator credentials. To verify our arbitrary file read primitive, we first targeted the system's `/etc/passwd` file. The server processed the disclosure request, revealing valid system user accounts, notably `trivia` and `william` .
