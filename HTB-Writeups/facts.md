@@ -113,6 +113,7 @@ cd CVE-2024-46987
 ls
 ```
 
+<img width="866" height="152" alt="Screenshot 2026-05-13 155724" src="https://github.com/user-attachments/assets/0c07ae9e-97f7-4fda-bb4d-6b4b3db4906d" />
 
 <img width="421" height="111" alt="Screenshot 2026-05-13 155736" src="https://github.com/user-attachments/assets/c421189e-a56f-4bda-9524-42d252191e9a" />
 
