@@ -58,8 +58,9 @@ The application backend likely structures its SQL authentication query like this
 ### SQL
 ```bash
 SELECT * FROM users WHERE username = '$username' AND password = '$password';
-By injecting a single quote followed by a logical OR condition into the username field, we can trick the query logic into evaluating as true regardless of the password supplied.
 ```
+By injecting a single quote followed by a logical OR condition into the username field, we can trick the query logic into evaluating as true regardless of the password supplied.
+
 
 ## Injected Username: admin' OR '1'='1 (or simply admin'#)
 
@@ -70,8 +71,9 @@ This alters the backend query logic to:
 ### SQL
 ```bash
 SELECT * FROM users WHERE username = 'admin' OR '1'='1'-- ...'
-Because '1'='1' is always true, the database bypasses the password verification entirely and authenticates the first entry found in the database (usually the administrator account).
 ```
+Because '1'='1' is always true, the database bypasses the password verification entirely and authenticates the first entry found in the database (usually the administrator account).
+
 
 Capturing the Flag
 Submitting the payload successfully bypassed the login wall and immediately redirected to the landing page containing the flag.
