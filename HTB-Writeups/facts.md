@@ -1,4 +1,4 @@
-# 🚀 Hack The Box - Dancing Write-up
+# 🚀 Hack The Box - Facts Write-up
 
 ### **Machine Information**
 | Machine Name | Target IP | Difficulty | Focus Service | Status |
