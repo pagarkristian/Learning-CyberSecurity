@@ -33,7 +33,7 @@ I am currently focusing heavily on the **HTB Certified Defensive Security Analys
 Apart from guided platform labs, I design and orchestrate standalone virtual enterprise environments to test complex vulnerability pipelines:
 
 * 🏛️ **[Enterprise Homelab Core](https://github.com/pagarkristian/enterprise-homelab-core):** A production network simulation tracing infrastructure evolution from a completely vulnerable setup (`v1.0.0`) to an engineered secure baseline (`v1.1.0`).
-* 🎯 **[Red Team Arsenal](https://github.com/pagarkristian/redteam-homelab-arsenal):** A dynamic warehouse containing custom automation exploits, weaponized web shells, and regression retesting validation suites.
+* 🎯 **[Red Team Arsenal](https://github.com/pagarkristian/redteam-homelab-toolkit):** A dynamic warehouse containing custom automation exploits, weaponized web shells, and regression retesting validation suites.
 
 ---
 
