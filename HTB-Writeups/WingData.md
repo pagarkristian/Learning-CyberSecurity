@@ -22,7 +22,7 @@ ping -c 4 10.129.63.65
 
 ### The results showed a stable response with a TTL value of 63, indicating a Linux-based target.
 
-## Local DNS Mapping
+### Local DNS Mapping
 The local /etc/hosts file was updated to map the target IP address to the primary domain and the identified FTP subdomain.
 
 ```bash
@@ -78,7 +78,7 @@ Public exploit research regarding Wing FTP Server v7.4.3 pointed to CVE-2025-478
 <img width="1905" height="902" alt="Screenshot 2026-05-19 202427" src="https://github.com/user-attachments/assets/3965bf6a-ece0-436c-b3fd-8f4c8103e0a2" />
 <img width="1507" height="345" alt="Screenshot 2026-05-19 202524" src="https://github.com/user-attachments/assets/fcd2c414-e1b6-4fc3-a5d1-684aa6389682" />
 
-### 4. Exploitation Setup & Foothold
+## 4. Exploitation Setup & Foothold
 Creating the Reverse Shell Payload
 A simple interactive shell script named shell.sh was created within the /tmp directory of the attacker machine (10.10.14.23).
 
@@ -108,7 +108,7 @@ wingftp@wingdata:/opt/wftpserver$
 ```
 <img width="926" height="138" alt="Screenshot 2026-05-19 211124" src="https://github.com/user-attachments/assets/534b63a3-99ea-48bf-9911-cdc3348888e8" />
 
-###  4: Internal Enumeration & Directory Listing
+###  Internal Enumeration & Directory Listing
 After gaining initial access as the `wingftp` service user, a manual post-exploitation reconnaissance was conducted on the WingFTP application directory to hunt for sensitive files.
 
 ```bash
@@ -148,7 +148,7 @@ hashcat -m 1410 pass.txt /usr/share/wordlists/rockyou.txt
 <img width="1179" height="279" alt="Screenshot 2026-05-19 213250" src="https://github.com/user-attachments/assets/c612a6f1-3550-4f52-9aa4-33be5f2c2432" />
 <img width="1044" height="382" alt="Screenshot 2026-05-19 213312" src="https://github.com/user-attachments/assets/5be4b331-ec09-45e2-a03c-fc3baa106800" />
 
-### 5: Lateral Movement via SSH
+## 5: Lateral Movement via SSH
 Armed with the cracked credential, an SSH connection was initiated to pivot into a higher-privileged shell environment under the wacky user account.
 
 ```Bash
@@ -176,7 +176,7 @@ wingftp@wingdata:/$ cat user.txt
 <img width="563" height="120" alt="Screenshot 2026-05-19 213529" src="https://github.com/user-attachments/assets/119803c3-9c0d-4dc8-be19-be9c8a4e0bb6" />
 
 
-##  7 : Local Enumeration & Sudo Rights Check
+##  7  Local Enumeration & Sudo Rights Check
 After successfully gaining access as the `wacky` user, a check for `sudo` privileges was conducted to find potential privilege escalation vectors.
 
 ```bash
@@ -198,7 +198,7 @@ with tarfile.open(backup_path, "r") as tar:
 
 
 
-####  8: Identifying CVE-2025-4517 & Exploit Preparation
+##  8 Identifying CVE-2025-4517 & Exploit Preparation
 The application relies on a vulnerable implementation of Python's tarfile module. This setup is susceptible to CVE-2025-4517, a vulnerability allowing arbitrary file writes via a combination of symlink path traversal and hardlink manipulation— effectively bypassing the filter="data" restriction introduced in modern Python versions.
 
 On the local attacker machine (Kali Linux), the public Proof of Concept (PoC) exploit script was cloned from GitHub:
@@ -216,7 +216,7 @@ python3 -m http.server 80
 
 <img width="830" height="64" alt="Screenshot 2026-05-19 222151" src="https://github.com/user-attachments/assets/2339f8b5-65f5-4381-b5f4-c5f4846cbf94" />
 
-### 9 Transferring the Exploit Payload
+## 9 Transferring the Exploit Payload
 Switching back to the target session under the /tmp directory, the exploit script was downloaded from the host machine using wget:
 
 ```Bash
