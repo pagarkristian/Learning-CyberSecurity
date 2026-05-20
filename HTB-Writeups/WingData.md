@@ -68,8 +68,8 @@ http://ftp.wingdata.htb/login.html revealed a web application authentication pag
 "we need to add and im done in the first time /etc/hosts"
 
 At the bottom of the login form, the specific software version in use was explicitly stated:
+<img width="1913" height="886" alt="Screenshot 2026-05-19 202304" src="https://github.com/user-attachments/assets/9c685a95-f919-4e58-9ae6-80aa8c7ab204" />
 
-<img width="1919" height="846" alt="Screenshot 2026-05-19 202234" src="https://github.com/user-attachments/assets/67e4731c-a40d-44f2-8eeb-57e1cf1a7bb0" />
 
 FTP server software powered by Wing FTP Server v7.4.3
 
