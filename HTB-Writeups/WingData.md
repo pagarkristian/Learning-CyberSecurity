@@ -124,7 +124,8 @@ wingftp@wingdata:/$ cat /home/ubuntu/user.txt
 966b96fc8bc54bfcb8be1b54b1f41bdf
 ```
 
-<img width="998" height="76" alt="Screenshot 2026-05-19 202725" src="https://github.com/user-attachments/assets/5e1871dd-47ff-4cb6-ba9e-def2229ff666" />
+<img width="563" height="120" alt="Screenshot 2026-05-19 213529" src="https://github.com/user-attachments/assets/119803c3-9c0d-4dc8-be19-be9c8a4e0bb6" />
+
 
 
 
