@@ -120,7 +120,7 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 The user flag was successfully located and retrieved from the home directory of the ubuntu user.
 
 ```bash
-wingftp@wingdata:/$ cat user.tx
+wingftp@wingdata:/$ cat user.txt
 966b96fc8bc54bfcb8be1b54b1f41bdf
 ```
 
