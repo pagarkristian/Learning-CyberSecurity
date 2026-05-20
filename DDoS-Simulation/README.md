@@ -1,4 +1,4 @@
-# DDoS Attack & Defense Simulation (DigiUp Simulation)
+# DDoS Attack & Defense Simulation 
 
 
 This project documents a penetration testing simulation against an Ubuntu Server using **Flooding** and **Resource Exhaustion methods**, as well as the implementation of security mitigations using `iptables`. This simulation aims to analyze network security characteristics across different OSI layers.
