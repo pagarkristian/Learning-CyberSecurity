@@ -9,16 +9,6 @@
 
 
 
-# ⚛️ Hack The Box - Reactor Write-up
-
-### Machine Information
-
-| Machine Name | Target IP      | Difficulty | Focus           | Status   |
-| :----------- | :------------- | :--------- | :-------------- | :------- |
-| Reactor      | `10.129.3.194` | Medium     | Next.js / Linux | SOLVED ✅ |
-
-<img width="1200" height="600" alt="reactor-banner" src="https://github.com/user-attachments/assets/example-banner.png" />
-
 ---
 
 # 📌 Attack Chain
